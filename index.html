@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <title>Paint App</title>
+    </head>
+
+    <body>
+        <!-- Welcome Popup -->
+        <div class="custom-popup" id="welcome-popup">
+            <div class="popup-content">
+                <h2>Welcome to My Paint Web App!</h2>
+                <p>We're thrilled to have you on board. Unleash your creativity and start creating amazing artworks.</p>
+                <p>This project is open source, and you can find the code on <a
+                        href="https://github.com/MAS-RA/paint-web-app" target="_blank">GitHub</a>. Feel free to use,
+                    modify, and contribute to the codebase!</p>
+                <p>Developed by Ali Saeed. &copy; 2023 Paint Web App. All rights reserved.</p>
+
+                <!-- Social Links -->
+                <div class="social-links">
+                    <p>Follow me for more inspiration:</p>
+                    <a href="https://www.sololearn.com/profile/26555651" target="_blank"><i
+                            class="fab fa-sololearn"></i> Follow me on Sololearn</a>
+                    <a href="https://www.instagram.com/alisaeed.thabt/" target="_blank"><i class="fab fa-instagram"></i>
+                        Follow me on Instagram</a>
+                    <a href="https://github.com/MAS-RA/paint-web-app" target="_blank"><i class="fab fa-github"></i>
+                        Check out the project on GitHub</a>
+                    <a href="https://www.buymeacoffee.com/AliSaeedThabt" target="_blank"><i class="fas fa-mug-hot"></i>
+                        Buy Me a Coffee</a>
+                </div>
+
+                <!-- Close Popup Button -->
+                <button id="close-popup">Get Started</button>
+            </div>
+        </div>
+        <div class="custom-popup" id="error-popup">
+            <div class="popup-content">
+                <img src="error-icon.png" alt="Error Icon">
+                <h2>Error</h2>
+                <p id="error-message"></p>
+                <button id="close-error-popup">Close</button>
+            </div>
+        </div>
+        <!-- Main Content -->
+        <div class="container">
+            <div class="header">
+                <h1>Modern Paint</h1>
+            </div>
+            <div id="text-popup" class="popup">
+                <h2>Insert Text</h2>
+                <textarea id="text-input" placeholder="Enter your text"></textarea>
+                <button id="insert-text">Insert</button>
+            </div>
+
+            <!-- Tool Buttons and Inputs -->
+            <div class="tools">
+                <button id="pen" class="tool-button"><i class="fas fa-pen"></i> Pen</button>
+                <button id="eraser" class="tool-button"><i class="fas fa-eraser"></i> Eraser</button>
+                <button id="clear" class="tool-button"><i class="fas fa-trash"></i> Clear</button>
+                <button id="color-picker" class="tool-button"><i class="fas fa-eye-dropper"></i> Color Picker
+                    <input type="color" id="color-input" value="#000000">
+                </button>
+                <button id="background-color" class="tool-button"><i class="fas fa-fill"></i> Background Color
+                    <input type="color" id="background-color-input" value="#ffffff">
+                </button>
+                <button id="text" class="tool-button"><i class="fas fa-font"></i> Text</button>
+                <input type="range" id="pen-width" class="tool-input" min="1" max="20" value="5">
+                <span id="pen-width-label" class="tool-label">Pen: 5</span>
+                <input type="range" id="font-size" class="tool-input" min="10" max="100" value="30">
+                <span id="font-size-label" class="tool-label">Font Size: 30</span>
+            </div>
+
+            <!-- Canvas Element -->
+            <canvas id="canvas"></canvas>
+        </div>
+
+        <!-- JavaScript -->
+        <script src="script.js"></script>
+        <script>
+            // Display the welcome popup when the page loads
+            window.addEventListener('load', function () {
+                const popup = document.getElementById('welcome-popup');
+                popup.classList.add('show');
+            });
+
+            // Get the close button
+            const closeButton = document.getElementById('close-popup');
+
+            // Get the popup
+            const popup = document.getElementById('welcome-popup');
+
+            // Add a click event listener to the close button
+            closeButton.addEventListener('click', () => {
+                // Hide the popup
+                popup.style.display = 'none';
+            });
+            // Add event listener to close the error popup
+            const closeErrorButton = document.getElementById('close-error-popup');
+            closeErrorButton.addEventListener('click', () => {
+                const errorPopup = document.getElementById('error-popup');
+                errorPopup.style.display = 'none';
+            });
+        </script>
+    </body>
+
+</html>
